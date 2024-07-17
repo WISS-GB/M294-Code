@@ -1,3 +1,9 @@
+# Intro
+
+Dies ist ein Step-by-Step Repo für ein ReactJS-basiertes Frontend eines Online-Quizzes.
+
+Der schrittweise Aufbau ist in den Branches hinterlegt (inkl. Vorlage und Lösungsbranch)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
