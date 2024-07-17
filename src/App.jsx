@@ -1,4 +1,12 @@
 import './App.css';
+import Button from './Button';
+
+const buttonLabels = ["Alpha", "Bravo", "Charlie"];
+
+const myfun = (event) => {
+  console.log("Hello, "+event.target.innerHTML);
+  document.getElementById("feedback").innerHTML = event.target.innerHTML;
+}
 
 function App() {
 
@@ -9,14 +17,17 @@ function App() {
         <hr />
         <h2>Welcher Begriff kommt im <a href="https://de.wikipedia.org/wiki/ICAO-Alphabet">ICAO-Buchstabieralphabet</a> zuerst?</h2>
         { /* hier könnte ein Smiley entstehen */ }
+        <img src="/img/question_smiley.png" alt="" />
         <hr />
       </header>
       <div className="buttonbar">
-        { /* Buttons hier erstellen */ }
+        {buttonLabels.map((label) => <Button label={label} onClick={myfun} key={label}/>)}
       </div>
       <hr />
       <div className="feedbackbar">
         { /*answer*/ }
+        <div id="feedback">
+        </div>
       </div>
     </div>
   );
