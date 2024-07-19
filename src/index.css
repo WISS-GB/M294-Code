@@ -54,6 +54,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.GlobalNavigation {
+  display: flex;
+  background-color: #AAA;
+}
+
+.GlobalNavigation a {
+  padding: 5px 10px;
+  margin: 10px;
+  color: #1a1a1a;
+  font-size: 1.2em;
+  font-weight: bold;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
