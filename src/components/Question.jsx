@@ -1,15 +1,41 @@
-import Button from "./Button";
-export default function Question(props) {
-  return (
-    <div>
-      <h1>Question</h1>
-      <h2>{props.question.question}</h2>
-      <div className="buttonbar">
-        {
-          props.question.answers.map((answer) => <Button label={answer} key={answer}/>)
-        }
-      </div>
+import Button from './Button';
 
+function Question() {
+
+  const question = {
+    question: "Was ist 2 * 4",
+    answers: [
+      3, 5, 8
+    ],
+    correct_answer: 8
+  }
+
+  const evaluate_answer = (event) => {
+    console.log("Hello, "+event.target.innerHTML)
+    const answer = event.target.innerHTML
+    document.getElementById("feedback").innerHTML = answer
+    answer==question.correct_answer
+      ? document.getElementById("smiley").src = "/img/kiss_smiley.png"
+      : document.getElementById("smiley").src = "/img/sad_smiley.png"
+  }
+
+  return (
+    <div className="App">
+      <h2>{ question.question }</h2>
+      { /* hier könnte ein Smiley entstehen */ }
+      <img id="smiley" src="/img/question_smiley.png" alt="" />
+      <hr />
+      <div className="buttonbar">
+        {question.answers.map((label) => <Button label={label} onClick={ evaluate_answer } key={ label }/>)}
+      </div>
+      <hr />
+      <div className="feedbackbar">
+        { /*answer*/ }
+        <div id="feedback">
+        </div>
+      </div>
     </div>
   );
 }
+
+export default Question;
