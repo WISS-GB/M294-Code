@@ -28,7 +28,6 @@ function Layout() {
       <GlobalNavigation />
       <div className="content">
           <header className="App-header">
-          <h1>Welcome to the Wiss-Quiz</h1>
           <hr />
           <Outlet />
           <hr />
