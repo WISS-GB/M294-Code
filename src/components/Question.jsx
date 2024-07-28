@@ -1,14 +1,6 @@
 import Button from './Button';
 
-function Question() {
-
-  const question = {
-    question: "Was ist 2 * 4",
-    answers: [
-      3, 5, 8
-    ],
-    correct_answer: 8
-  }
+function Question({question}) {
 
   const evaluate_answer = (event) => {
     console.log("Hello, "+event.target.innerHTML)
