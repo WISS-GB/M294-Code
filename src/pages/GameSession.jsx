@@ -1,30 +1,19 @@
-
+import { useState } from "react";
 import Question from "../components/Question";
 
-export default function GameSession() {
+export default function GameSession(props) {
 
-  const questions = [
-    {
-      question: "What is the answer to life, the universe and everything?",
-      answers: ["Answer 1", "3", "42"],
-      correct_answer: "42"
-    },
-    {
-      question: "What is the result of 21 * 2?",
-      answers: ["21", "2", "42"],
-      correct_answer: "42"
-    },
-    {
-      question: "What is the result of 14 * 3?",
-      answers: ["21", "2", "42"],
-      correct_answer: "42"
-    }];
+
+  const [questions, getQuestions] = useState(props.questions!==undefined? props.questions : [{
+    question: "What is the answer to life, the universe and everything?",
+    answers: ["Answer 1", "3", "42"],
+  }]);
 
 
   return (
     <div>
-      <h2>Game - Session</h2>
-      <Question questions={ questions } />
+      <h1>GameSession</h1>
+      <Question question={ questions[0] } />
     </div>
   );
 }
