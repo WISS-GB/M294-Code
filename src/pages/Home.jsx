@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
 
-  const [counter, setCounter] = useState(0)
+  const [count, setCount] = useState(0);
 
-  const clickMe = () => {
-    setCounter(counter + 1)
-  }
+    useEffect(() => {
+      setTimeout(() => {
+        setCount((count) => count + 1);
+      }, 1000);
+    }, []); // <- add empty brackets here
 
   return (
     <div>
       <h1>Home</h1>
-      <button onClick= { clickMe }>{ counter }</button>
+      <h4>I've rendered {count} times!</h4>
     </div>
   );
 }

@@ -30,6 +30,28 @@ table.question-list td, table.question-list td li {
   background-color: darkgreen;
 }
 
+.myform {
+  width: 100%;;
+}
+
+.myform>div{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.myform>div>label:first {
+  width: 44%;
+  text-align: right;
+}
+
+
+
+.myform input[type=text] {
+  padding: 3px;
+  width: 40%;
+}
+
 .App {
   min-height: 100vh;
   text-align: center;

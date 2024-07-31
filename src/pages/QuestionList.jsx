@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const QuestionList = () => {
 
@@ -19,6 +20,11 @@ const QuestionList = () => {
 
   return (
     <>
+      <h1>Fragekatalog</h1>
+      <div className="flex">
+      <button><Link to="/categories/new">Neue Kategorie</Link></button>
+      <button><Link to="/questions/new">Neue Frage</Link></button>
+      </div>
       <table className="question-list">
         <thead>
           <tr>
