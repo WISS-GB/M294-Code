@@ -6,6 +6,7 @@ export default function GlobalNavigation() {
       <Link to="/">Home</Link>
       <Link to="/quiz">Quiz</Link>
       <Link to="/rules">Rules</Link>
+      <Link to="/questions">Questions</Link>
       <Link to="/impressum">Impressum</Link>
     </nav>
   );

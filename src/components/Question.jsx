@@ -9,7 +9,8 @@ function Question() {
   const [questions, setQuestions] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:8080/questions/quiz/1") //"https://opentdb.com/api.php?amount=3"
+    fetch("http://localhost:8080/questions/quiz/1",{ mode: "cors" })
+//    fetch("https://opentdb.com/api.php?amount=3",{ mode: "cors" }) //an alternative multiple choice api with different data model
       .then(response => {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -17,9 +18,17 @@ function Question() {
         return response.json();
       })
       .then(data => {
+        shuffle(data)
         setQuestions(data)
       })
   }, []);
+
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
   const evaluate_answer = (event) => {
     console.log("Hello, "+event.target.innerHTML)

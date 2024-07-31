@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import GameSession from './pages/GameSession';
 import Rules from './pages/Rules';
 import Impressum from './pages/Impressum';
+import QuestionList from './pages/QuestionList';
 import GlobalNavigation from './components/GlobalNavigation';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="quiz" element={<GameSession />} />
           <Route path="rules" element={<Rules />} />
+          <Route path='questions' element={<QuestionList />} />
           <Route path="impressum" element={<Impressum />} />
       </Route>
       <Route path="*" element={<NotFound />} />
