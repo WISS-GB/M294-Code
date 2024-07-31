@@ -1,17 +1,31 @@
 import Button from './Button';
 import { useState, useEffect } from 'react';
-function Question(props) {
+function Question() {
   const GAME_OVER = 2;
 
   const [state, setState] = useState(0)
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
+  const [questions, setQuestions] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:8080/questions/quiz/1") //"https://opentdb.com/api.php?amount=3"
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setQuestions(data)
+      })
+  }, []);
 
   const evaluate_answer = (event) => {
     console.log("Hello, "+event.target.innerHTML)
     const answer = event.target.innerHTML
     document.getElementById("feedback").innerHTML = answer
-    answer==props.questions[index].correct_answer
+    answer==questions[index].correct_answer
       ? handleCorrectAnswer()
       : handleWrongAnswer()
 
@@ -28,7 +42,7 @@ function Question(props) {
   }
 
   const next_question = () => {
-    if (index===props.questions.length-1) {
+    if (index===questions.length-1) {
       setState(GAME_OVER)
       return
     }
@@ -36,36 +50,52 @@ function Question(props) {
     setState(0)
   }
 
-  return (
+  const game_loads = () => {
+    return (<>
+      <h3>Loading...</h3>
+    </>)
+  }
 
-    <div className="App">
-      <h2>{ state!==GAME_OVER? props.questions[index].question : "Ende" }</h2>
+  const game_over = () => {
+    return (
+      <>
+        <h3>Spielende</h3>
+        <p>Dein Score: { score } von { questions.length }</p>
+        <Button label="Neues Spiel" onClick={ () => window.location.reload() }/>
+    </>
+    )
+  }
+
+  const game_screen = () => {
+    return (<>
+      <h2>{questions[index].question}</h2>
       { /* hier könnte ein Smiley entstehen */ }
       <img id="smiley" src="/img/question_smiley.png" alt="" />
       <hr />
-      { state !== GAME_OVER
-        ? <>
-          <h3>Score: { score } von { props.questions.length }</h3>
+      <>
+          <h3>Score: { score } von { questions.length }</h3>
           <div className="buttonbar">
-            {props.questions[index].answers.map((label) =>
+           { questions[index].answers.map((label) =>
               <Button label={label} onClick={ state===0 ? evaluate_answer : null} key={ label }/>)}
           </div>
           </>
         : <></>
-        }
       <hr />
       <div className="feedbackbar">
         { state===1? <Button label="Weiter" onClick={ next_question }/> : <></>   }
-        { state===GAME_OVER?
-          <>
-            <h3>Spielende</h3>
-            <p>Dein Score: { score } von { props.questions.length }</p>
-            <Button label="Neues Spiel" onClick={ () => window.location.reload() }/>
-          </>
-           : <></>   }
         <div id="feedback">
         </div>
       </div>
+    </>)
+  }
+
+  return (
+
+    <div className="App">
+      { questions.length===0 ? game_loads()
+        : state===2 ? game_over()
+            : game_screen()
+          }
     </div>
   );
 }
