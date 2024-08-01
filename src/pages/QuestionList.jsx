@@ -18,6 +18,18 @@ const QuestionList = () => {
       })
   }, []);
 
+  const deleteQuestion = (event) => {
+    const id = event.target.value
+    fetch(`http://localhost:8080/questions/${id}`,{ method: "DELETE", mode: "cors" })
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        console.log(response.body);
+        setQuestions(questions.filter(question => question.id !== id))
+      })
+  }
+
   return (
     <>
       <h1>Fragekatalog</h1>
@@ -28,15 +40,16 @@ const QuestionList = () => {
       <table className="question-list">
         <thead>
           <tr>
-            <th>Question</th>
-            <th>Answer</th>
+            <th>Frage</th>
+            <th>Antwort</th>
           </tr>
         </thead>
         <tbody>
           {questions.map(question => (
             <tr key={question.id}>
               <td>{question.question}</td>
-              <td>{question.answers.map(a => <li>{a.answer}</li>)}</td>
+              <td>{question.answers.map(a => <li key={a.answer}>{a.answer}</li>)}</td>
+              <td><button onClick={ deleteQuestion } value={question.id} >&#128465;</button></td>
             </tr>
           ))}
         </tbody>

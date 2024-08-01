@@ -45,11 +45,36 @@ table.question-list td, table.question-list td li {
   text-align: right;
 }
 
-
-
 .myform input[type=text] {
   padding: 3px;
   width: 40%;
+  font-size: 1.1em;
+}
+
+.myform input.long {
+  flex: 1;
+}
+
+.myform .radio-control {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  transform: translateY(0.2em);
+}
+
+.myform input[type=radio] {
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+
 }
 
 .App {
