@@ -2,7 +2,7 @@
 
 Dies ist ein Step-by-Step Repo für ein ReactJS-basiertes Frontend eines Online-Quizzes.
 
-Der schrittweise Aufbau ist in den Branches hinterlegt (inkl. Vorlage und Lösungsbranch)
+Der schrittweise Aufbau ist in den Branches hinterlegt (Lösungsbranch)
 
 # React + Vite
 

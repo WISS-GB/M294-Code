@@ -13,9 +13,9 @@ function Question() {
 //    fetch("https://opentdb.com/api.php?amount=3",{ mode: "cors" }) //an alternative multiple choice api with different data model
       .then(response => {
         if (!response.ok) {
-          throw Error(response.statusText);
+          throw Error(response.statusText)
         }
-        return response.json();
+        return response.json()
       })
       .then(data => {
         shuffle(data)
@@ -25,9 +25,10 @@ function Question() {
 
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      let j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    return array
   }
 
   const evaluate_answer = (event) => {
@@ -83,7 +84,7 @@ function Question() {
       <>
           <h3>Score: { score } von { questions.length }</h3>
           <div className="buttonbar">
-           { questions[index].answers.map((label) =>
+           { shuffle(questions[index].answers).map((label) =>
               <Button label={label} onClick={ state===0 ? evaluate_answer : null} key={ label }/>)}
           </div>
           </>
