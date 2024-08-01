@@ -5,7 +5,7 @@ export default function GameSession(props) {
 
   return (
     <div>
-      <h1>GameSession</h1>
+      <h2>GameSession</h2>
       <Question />
     </div>
   );

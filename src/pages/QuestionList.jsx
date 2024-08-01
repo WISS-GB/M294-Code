@@ -22,8 +22,8 @@ const QuestionList = () => {
       <table className="question-list">
         <thead>
           <tr>
-            <th>Question</th>
-            <th>Answer</th>
+            <th>Frage</th>
+            <th>Antwort</th>
           </tr>
         </thead>
         <tbody>

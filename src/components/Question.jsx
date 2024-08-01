@@ -78,7 +78,6 @@ function Question() {
   const game_screen = () => {
     return (<>
       <h2>{questions[index].question}</h2>
-      { /* hier könnte ein Smiley entstehen */ }
       <img id="smiley" src="/img/question_smiley.png" alt="" />
       <hr />
       <>
