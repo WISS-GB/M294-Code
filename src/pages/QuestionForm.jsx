@@ -14,8 +14,9 @@ const QuestionForm = () => {
     })
   }
 
+  // required for redirection
   const navigate = useNavigate();
-
+  // rediction on success
   useEffect(() => {
     if (done) {
       navigate('/questions', { replace: true });
@@ -23,6 +24,7 @@ const QuestionForm = () => {
   }, [done, navigate]);
 
   const handleSubmit = (event) => {
+    // strictly necessary to prevent the page from reloading(!!)
     event.preventDefault();
 
     if (inputs.question === "" || inputs.answer1 === "" || inputs.answer2 === "" || inputs.answer3 === "") {

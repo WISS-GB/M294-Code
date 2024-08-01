@@ -14,6 +14,8 @@ const CategoryForm = () => {
     })
   }
 
+  // ------------------------------------------------------------------------------
+  // code for optional redirection
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,15 +24,7 @@ const CategoryForm = () => {
     }
   }, [done, navigate]);
 
-
-  const handleSubmit = async(event) => {
-
-    if (inputs.category.trim().length<3) {
-      alert("Bitte sinnvollen Kategorienamen mit mindestens drei Zeichen eingeben")
-      return
-    }
-
-    event.preventDefault() //extremely important to prevent the page from reloading while request is processed
+  const sendDataAsync = async() => {
     try {
       const response = await fetch("http://localhost:8080/category", {
         mode: "cors",
@@ -53,8 +47,45 @@ const CategoryForm = () => {
     } catch (error) {
       console.log("Category Add Error: " + error)
     }
+  }
+  // end redirection code
+  // ------------------------------------------------------------------------------
+
+
+  const sendData = () => {
+    fetch("http://localhost:8080/category", {
+      mode: "cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: "name="+inputs.category
+    }). then(response => {
+      if ( response.ok ) {
+        console.log("Kategorie wurde angelegt")
+        setDone(true)
+      }
+      else {
+        console.log("Kategorie konnte nicht angelegt werden, Fehlercode: " + response.status)
+
+      }
+    })
 
   }
+
+  const handleSubmit = async(event) => {
+
+    if (inputs.category.trim().length<3) {
+      alert("Bitte sinnvollen Kategorienamen mit mindestens drei Zeichen eingeben")
+      return
+    }
+
+    event.preventDefault() //extremely important to prevent the page from reloading while request is processed
+
+    sendDataAsync()
+    // sendData()
+  }
+
 
   return (
     <>
