@@ -28,6 +28,7 @@ function Question() {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    return array
   }
 
   const evaluate_answer = (event) => {
@@ -84,7 +85,7 @@ function Question() {
       <>
           <h3>Score: { score } von { questions.length }</h3>
           <div className="buttonbar">
-           { questions[index].answers.map((label) =>
+           { shuffle(questions[index].answers).map((label) =>
               <Button label={label} onClick={ state===0 ? evaluate_answer : null} key={ label }/>)}
           </div>
           </>
