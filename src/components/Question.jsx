@@ -58,6 +58,7 @@ function Question() {
     }
     setIndex(index+1)
     setState(0)
+    document.getElementById("smiley").src = "/img/question_smiley.png"
   }
 
   const game_loads = () => {
@@ -70,8 +71,10 @@ function Question() {
     return (
       <>
         <h3>Spielende</h3>
+        <img id="smiley" src="/img/kiss_smiley.png" alt="" />
         <p>Dein Score: { score } von { questions.length }</p>
         <Button label="Neues Spiel" onClick={ () => window.location.reload() }/>
+
     </>
     )
   }
