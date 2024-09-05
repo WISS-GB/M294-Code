@@ -6,6 +6,7 @@ export default function GameSession() {
   const question = {
     question: "What is the answer to life, the universe and everything?",
     answers: ["Answer 1", "3", "42"],
+    correctAnswer: "42"
   };
 
 
