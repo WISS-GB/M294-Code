@@ -4,6 +4,10 @@ Dies ist ein Step-by-Step Repo für ein ReactJS-basiertes Frontend eines Online-
 
 Der schrittweise Aufbau ist in den Branches hinterlegt (inkl. Vorlage und Lösungsbranch)
 
+Der Quellcode für die ab SQ7A verwendete REST-API ist vefügbar unter <https://github.com/greenorca/m294-wissquiz-api> und kann als `docker compose` Stack gestartet werden.
+
+Alternative, vereinfachte Lösungen inkl. API-Server sind im SQ7A bzw. SQ7B vorhanden. 
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
